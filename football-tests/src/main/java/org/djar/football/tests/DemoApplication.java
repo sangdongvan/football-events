@@ -47,7 +47,7 @@ public class DemoApplication {
                 if (currentLine[1].startsWith("INSERT")) {
                     sql(currentLine);
                 } else {
-                    rest(currentLine);
+//                    rest(currentLine);
                 }
                 nextLine = readLine(reader);
 

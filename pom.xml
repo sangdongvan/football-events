@@ -18,6 +18,7 @@
         <module>football-view-basic</module>
         <module>football-view-top</module>
         <module>football-ui</module>
+        <module>football-tests</module>
     </modules>
 
     <parent>
@@ -39,8 +40,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>10</source>
-                    <target>10</target>
+                    <source>11</source>
+                    <target>11</target>
                     <verbose>true</verbose>
                 </configuration>
             </plugin>
