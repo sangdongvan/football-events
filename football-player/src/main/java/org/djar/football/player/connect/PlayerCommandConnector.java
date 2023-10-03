@@ -53,7 +53,13 @@ public class PlayerCommandConnector {
     }
 
     private boolean creationOrSnapshot(JsonNode json) {
-        char op = json.get("payload").get("op").textValue().charAt(0);
+        char op;
+        try {
+            op = json.get("payload").get("op").textValue().charAt(0);
+        } catch (Exception ex) {
+            logger.warn("Unexpected exception.", ex);
+            return false;
+        }
 
         // c - create (insert), r - read (in the case of a snapshot)
         if (op == 'c' || op == 'r') {

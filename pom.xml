@@ -18,6 +18,7 @@
         <module>football-view-basic</module>
         <module>football-view-top</module>
         <module>football-ui</module>
+        <module>football-tests</module>
     </modules>
 
     <parent>

@@ -60,6 +60,16 @@ services:
       CONFIG_STORAGE_TOPIC: fb.connect.configs
       OFFSET_STORAGE_TOPIC: fb.connect.offsets
 
+  debezium-ui:
+    image: debezium/debezium-ui:latest
+    container_name: debezium-ui
+    ports:
+     - 8084:8080
+    links:
+     - connect
+    environment:
+      KAFKA_CONNECT_URIS: http://connect:8083
+
   football-match:
     container_name: football-match
     ports:

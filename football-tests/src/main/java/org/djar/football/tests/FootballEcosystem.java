@@ -112,10 +112,14 @@ public class FootballEcosystem {
         consumerProps.put(ConsumerConfig.GROUP_ID_CONFIG, getClass().getName());
         consumerProps.put(ConsumerConfig.CLIENT_ID_CONFIG, getClass().getName());
 
-        dockerCompose.up();
-        dockerCompose.waitUntilServicesAreAvailable(startupTimeout, MILLISECONDS);
+//        dockerCompose.up();
+//        dockerCompose.waitUntilServicesAreAvailable(startupTimeout, MILLISECONDS);
 
-        webSocket.connect();
+//        webSocket.connect();
+
+        postgres = new JdbcTemplate(new SimpleDriverDataSource(new Driver(),
+                "jdbc:postgresql://postgres:5432/postgres", "postgres", "postgres"));
+        createPlayersTable();
 
         started = true;
     }
@@ -260,8 +264,8 @@ public class FootballEcosystem {
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         try {
-            HttpStatus status = rest.exchange(connectorRestApiUrl, POST, new HttpEntity<>(json, headers), String.class)
-                    .getStatusCode();
+            ResponseEntity<String> response = rest.exchange(connectorRestApiUrl, POST, new HttpEntity<>(json, headers), String.class);
+            HttpStatus status = response.getStatusCode();
 
             if (status != CREATED) {
                 throw new RuntimeException("Unable to create Kafka connector, HTTP status: " + status);
