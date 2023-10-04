@@ -119,7 +119,6 @@ public class FootballEcosystem {
 
         postgres = new JdbcTemplate(new SimpleDriverDataSource(new Driver(),
                 "jdbc:postgresql://postgres:5432/postgres", "postgres", "postgres"));
-        createPlayersTable();
 
         started = true;
     }

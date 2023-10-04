@@ -45,9 +45,9 @@ public class DemoApplication {
                 String[] currentLine = nextLine;
 
                 if (currentLine[1].startsWith("INSERT")) {
-                    sql(currentLine);
+//                    sql(currentLine);
                 } else {
-//                    rest(currentLine);
+                    rest(currentLine);
                 }
                 nextLine = readLine(reader);
 
